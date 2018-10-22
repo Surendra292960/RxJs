@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <input type='text'>
+    <script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js "></script>
+    <script>
+	<input type = "text" id = "input1">
+	<input type = "text" id = "input">
+
+        var input = document.querySelector('#input1');
+        var input = document.querySelector('#input2');
+
+		var span = document.querySelector('span');
+
+		var obs1 = Rx.Observable.fromEvent(input, 'input');		
+		var obs2 = Rx.Observable.fromEvent(input, 'input');
+		
+		obs1.mergeMap(
+		event1 => {
+		return obs2.map(
+		event2 => event1.traget.value+' '+event2.target.value)
+		}
+		);
+
+    </script>
+</body>
+</html>
